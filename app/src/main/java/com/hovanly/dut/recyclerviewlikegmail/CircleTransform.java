@@ -13,8 +13,8 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
  * Copyright@ AsianTech.Inc
  * Created by Ly Ho V. on 19/07/2017
  */
-public class CircleTrasnfrorm extends BitmapTransformation {
-    public CircleTrasnfrorm(Context context) {
+public class CircleTransform extends BitmapTransformation {
+    public CircleTransform(Context context) {
         super(context);
     }
 
