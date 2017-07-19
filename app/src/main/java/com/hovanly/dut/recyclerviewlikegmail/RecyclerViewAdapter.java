@@ -70,7 +70,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             message = (TextView) view.findViewById(R.id.txt_secondary);
             iconText = (TextView) view.findViewById(R.id.icon_text);
             timestamp = (TextView) view.findViewById(R.id.timestamp);
-            iconBack = (RelativeLayout) view.findViewById(R.id.icon_back);
             iconFront = (RelativeLayout) view.findViewById(R.id.icon_front);
             iconImp = (ImageView) view.findViewById(R.id.icon_star);
             imgProfile = (ImageView) view.findViewById(R.id.icon_profile);
