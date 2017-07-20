@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -56,12 +57,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         void onRowLongClicked(int position);
     }
 
-    public class MessengerViewHolderItem extends RecyclerView.ViewHolder implements View.OnLongClickListener {
+    public class MessengerViewHolderItem extends RecyclerView.ViewHolder {
         private TextView from, subject, message, iconText, timestamp;
         private ImageView iconImp, imgProfile;
         private LinearLayout messageContainer;
         private RelativeLayout iconContainer, iconBack, iconFront;
         private MessengerGmail messengerGmail;
+        private RelativeLayout relativeLayout;
 
         public MessengerViewHolderItem(View view) {
             super(view);
@@ -75,7 +77,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             imgProfile = (ImageView) view.findViewById(R.id.icon_profile);
             messageContainer = (LinearLayout) view.findViewById(R.id.message_container);
             iconContainer = (RelativeLayout) view.findViewById(R.id.icon_container);
-            view.setOnLongClickListener(this);
+            relativeLayout = (RelativeLayout) view.findViewById(R.id.relativeLayout);
+            relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FlipAnimation.flipView(mContext, iconBack, iconFront, false);
+                    Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         public void onBind(MessengerGmail messengerGmail) {
@@ -101,11 +110,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 imgProfile.setImageResource(R.drawable.bg_circle);
                 iconText.setVisibility(View.VISIBLE);
             }
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            return false;
         }
     }
 }
